@@ -5,8 +5,8 @@ import sys
 from util import *
 
 # constants
-DEBUG = 0
-test = "( 2 + --3 )"
+DEBUG = 1
+test =  "2 --( 2 + * -32 )"
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -66,6 +66,8 @@ def infix_to_postfix(infix):
 				sign = 1
 			continue
 		if token in operators:
+			if lastop is True:
+				incorrect_token(token, idx)
 			while len(stack) > 0 and opcmp(stack[-1], token) >= 0:
 				rpn.append(stack.pop())
 			stack.append(token)
