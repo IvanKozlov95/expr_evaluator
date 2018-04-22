@@ -16,10 +16,9 @@ def eval_rpn(rpn):
 	stack = []
 	for el in rpn:
 		if el in operators:
-			try:
-				res = process_op(stack.pop(), stack.pop(), el)
-			except IndexError as e:
+			if len(stack) < 2:
 				raise Exception("Missing an operand")
+			res = process_op(stack.pop(), stack.pop(), el)
 			stack.append(res)
 		else:
 			stack.append(el)
