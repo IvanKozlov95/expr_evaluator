@@ -3,8 +3,10 @@
 import os
 import sys
 
-DEBUG = 0
-test = "(-2 + -2)"
+DEBUG = 1
+test = "(12 + -2)"
+operators = ['+', '-', '*', '/', '%', '^']
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 if DEBUG is 0:
 	if len(sys.argv) != 2:
@@ -15,8 +17,6 @@ if DEBUG is 0:
 else:
 	infix = test
 
-# operators
-operators = ['+', '-', '*', '/', '%', '^']
 stack = []
 rpn = []
 
