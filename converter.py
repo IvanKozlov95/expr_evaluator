@@ -45,6 +45,9 @@ def tokenize(input):
 				i += 1
 	return result
 
+def incorrect_token(token, pos):
+	raise Exception("Incorrect token '{}' at pos {}".format(token, pos))	
+
 def infix_to_postfix(infix):
 	sign = 1
 	rpn = []
@@ -53,10 +56,15 @@ def infix_to_postfix(infix):
 
 	print(infix)
 	for idx, token in enumerate(infix):
-		if token is '-' or token is '+' and lastop is True:
+		if (token is '-' or token is '+') and lastop is True:
 			sign = -1 if token is '-' else 1
 			if idx < len(infix) and infix[idx + 1] in operators:
-				raise Exception("Incorrect token '{}' at pos {}".format(infix[idx + 1], idx + 1))
+				incorrect_token(infix[idx + 1], idx + 1)
+			if idx < len(infix) and infix[idx + 1] is '(':
+				rpn.append('-1')
+				stack.append('*')
+				sign = 1
+			continue
 		if token in operators:
 			while len(stack) > 0 and opcmp(stack[-1], token) >= 0:
 				rpn.append(stack.pop())
