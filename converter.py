@@ -5,12 +5,8 @@ import sys
 from util import *
 
 # constants
-DEBUG = 0
-test =  "2 --( 2 + * -32 )"
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-input = get_input() if DEBUG is 0 else test
 
 def get_precedence(op):
 	if op == '-' or op == '+':
@@ -88,5 +84,3 @@ def infix_to_postfix(infix):
 		rpn.append(stack.pop())
 
 	return rpn
-
-rpn = infix_to_postfix(tokenize(input))
