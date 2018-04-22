@@ -5,7 +5,7 @@ import sys
 from util import *
 
 # constants
-DEBUG = 1
+DEBUG = 0
 test =  "2 --( 2 + * -32 )"
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -90,6 +90,3 @@ def infix_to_postfix(infix):
 	return rpn
 
 rpn = infix_to_postfix(tokenize(input))
-for el in rpn:
-	puts(el + ' ')
-print()
