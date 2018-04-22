@@ -34,9 +34,11 @@ def tokenize(input):
 					j += 1
 				result.append(token[i:i+j])
 				i += j
-			else:
+			elif c in operators or c == '(' or c == ')':
 				result.append(c)
 				i += 1
+			else:
+				raise Exception("Invalid symbol '{}'".format(c))
 	return result
 
 def incorrect_token(token, pos):
