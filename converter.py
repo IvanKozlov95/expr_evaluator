@@ -52,12 +52,15 @@ def infix_to_postfix(infix):
 	for idx, token in enumerate(infix):
 		if (token is '-' or token is '+') and lastop is True:
 			sign = -1 if token is '-' else 1
-			if idx < len(infix) and infix[idx + 1] in operators:
+			if idx < len(infix) - 1:
+				if infix[idx + 1] in operators:
 				incorrect_token(infix[idx + 1], idx + 1)
-			if idx < len(infix) and infix[idx + 1] is '(':
+				elif infix[idx + 1] is '(':
 				rpn.append('-1')
 				stack.append('*')
 				sign = 1
+			else:
+				raise Exception("Not enough tokens")
 			continue
 		if token in operators:
 			if lastop is True:
