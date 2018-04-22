@@ -12,31 +12,31 @@ Mathematical expressions evaluator. Allows you to evaluate expression within ran
 * [Resources](#resources)
 
 ### Requirements
-	Python >= 3
+Python >= 3
 
 ## Install
-	Simply clone the repo:
+Simply clone the repo:
 
-		git clone https://github.com/IvanKozlov95/rpn_converter
+	git clone https://github.com/IvanKozlov95/rpn_converter
 
 ## Usage
-	Run main.py file and send expression string you want to evaluate:
+Run main.py file and send expression string you want to evaluate:
 
-		./main.py "1 + 3 * (2 - 1)^2"
+	./main.py "1 + 3 * (2 - 1)^2"
 	
-	Or:
+Or:
 
-		python main.py "1 + 3 * (2 - 1)^2"
+	python main.py "1 + 3 * (2 - 1)^2"
 
 ## Features
-	Following operations are supported
-	- Addition/Subtraction
-	- Multiplication
-	- Division/Modulo
-	- Power
+Following operations are supported
+- Addition/Subtraction
+- Multiplication
+- Division/Modulo
+- Power
 
 ## License
-	This project is [licensed][license] under the Apache license 2.0.
+This project is [licensed][license] under the Apache license 2.0.
 
 ## Resources
 
