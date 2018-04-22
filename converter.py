@@ -56,11 +56,11 @@ def infix_to_postfix(infix):
 			sign = -1 if token is '-' else 1
 			if idx < len(infix) - 1:
 				if infix[idx + 1] in operators:
-				incorrect_token(infix[idx + 1], idx + 1)
+					incorrect_token(infix[idx + 1], idx + 1)
 				elif infix[idx + 1] is '(':
-				rpn.append('-1')
-				stack.append('*')
-				sign = 1
+					rpn.append('-1')
+					stack.append('*')
+					sign = 1
 			else:
 				raise Exception("Not enough tokens")
 			continue
