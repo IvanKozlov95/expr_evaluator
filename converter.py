@@ -8,14 +8,39 @@ test = "(12 + -2)"
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
+def tokenize(input):
+	result = []
+	tokens = input.split(' ')
+	for token in tokens:
+		# if len(token) is 1:
+		# 	result.append(token)
+		# 	continue
+		i = 0
+		while i < len(token):
+			c = token[i]
+			if c in numbers:
+				# token[0:len(token)]
+				tail = token[i:]
+				for j in range(0, len(tail)):
+					if tail[j] not in numbers:
+						break
+				if j is len(tail) - 1 and tail[j] in numbers:
+					j += 1
+				result.append(token[i:i+j])
+				i += j
+			else:
+				result.append(c)
+				i += 1
+	return result
+
+
 if DEBUG is 0:
 	if len(sys.argv) != 2:
 		print('Usage: ./converter.py [infix expression]')
 		sys.exit()
-
-	infix = sys.argv[1]
+	infix = tokenize(sys.argv[1])
 else:
-	infix = test
+	infix = tokenize(test)
 
 stack = []
 rpn = []
@@ -38,8 +63,6 @@ def puts(msg):
 lastnumber = False
 sign = 1
 for token in infix:
-	if token == ' ':
-		continue
 	if token == '-' or token == '+' and lastnumber is False:
 		sign = -1 if token == '-' else 1
 		continue
