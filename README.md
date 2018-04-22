@@ -1,5 +1,6 @@
-# rpn_converter
+# Expression evaluator
 Project for [42][42] Authorship Program. First project of "Write your own interpreter" cycle.
+
 Mathematical expressions evaluator. Allows you to evaluate expression within range of supported operators.
 
 ## Table of contents
