@@ -1,7 +1,3 @@
-import os
-import sys
-from util import *
-
 # constants
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -50,7 +46,6 @@ def infix_to_postfix(infix):
 	stack = []
 	lastop = True
 
-	print(infix)
 	for idx, token in enumerate(infix):
 		if (token is '-' or token is '+') and lastop is True:
 			sign = -1 if token is '-' else 1

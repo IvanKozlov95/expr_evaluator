@@ -9,8 +9,4 @@ test =  "+"
 
 _input = get_input() if DEBUG is 0 else test
 rpn = infix_to_postfix(tokenize(_input))
-print(rpn)
-if len(rpn) is 0:
-	print("nothing in rpn")
-else:
-	print(eval_rpn(rpn))
+print(eval_rpn(rpn))
