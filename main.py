@@ -1,12 +1,9 @@
 #!/usr/local/bin/python
-
-from converter import infix_to_postfix, tokenize
-from evaluator import eval_rpn
-from util import *
+from evaluator import evaluator, converter, util
 
 DEBUG = 0
 test =  "+"
 
-_input = get_input() if DEBUG is 0 else test
-rpn = infix_to_postfix(tokenize(_input))
-print(eval_rpn(rpn))
+_input = util.get_input() if DEBUG is 0 else test
+rpn = converter.infix_to_postfix(converter.tokenize(_input))
+print(evaluator.eval_rpn(rpn))
