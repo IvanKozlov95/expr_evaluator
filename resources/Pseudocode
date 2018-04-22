@@ -1,0 +1,16 @@
+For all the input tokens [S1]:
+Read the next token [S2];
+If token is an operator (x) [S3]:
+While there is an operator (y) at the top of the operators stack and either (x) is
+left-associative and its precedence is less or equal to that of (y), or (x) is right-associative
+and its precedence is less than (y) [S4]:
+Pop (y) from the stack [S5];
+Add (y) output buffer [S6];
+Push (x) on the stack [S7];
+Else If token is left parenthesis, then push it on the stack [S8];
+Else If token is a right parenthesis [S9]:
+Until the top token (from the stack) is left parenthesis, pop from the stack to the output buffer [S10];
+Also pop the left parenthesis but don’t include it in the output buffer [S11];
+Else add token to output buffer [S12].
+While there are still operator tokens in the stack, pop them to output [S13]
+Note: [SN] Relate with code.
