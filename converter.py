@@ -7,16 +7,20 @@ if len(sys.argv) != 2:
 	print('Usage: ./converter.py [infix expression]')
 	sys.exit()
 
-infix = sys.argv[1]
+infix = sys.argv[1].split(' ')
 
 # operators
-operators = ['+', '-']
+operators = ['+', '-', '*', '/', '%', '**']
 stack = []
 rpn = []
 
 def get_precedence(op):
 	if op == '-' or op == '+':
 		return 13
+	elif op == '*' or op == '/' or op == '%':
+		return 14
+	elif op == '**':
+		return 15
 	return -1
 
 def opcmp(op1, op2):
@@ -27,12 +31,9 @@ def puts(msg):
 
 for token in infix:
 	if token in operators:
-		while len(stack) > 0:
-			if opcmp(stack[-1], token) >= 0:
-				rpn.append(stack.pop())
+		while len(stack) > 0 and opcmp(stack[-1], token) >= 0:
+			rpn.append(stack.pop())
 		stack.append(token)
-	elif token is " ":
-		continue
 	else:
 		rpn.append(token)
 while len(stack) != 0:
