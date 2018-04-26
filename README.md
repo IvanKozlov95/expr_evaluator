@@ -23,11 +23,11 @@ Simply clone the repo:
 ## Usage
 Run main.py file and send expression string you want to evaluate:
 
-	./main.py "1 + 3 * (2 - 1)^2"
+	./main.py "1 + 3 * ( 2 - 1 ) ^ 2"
 	
 Or:
 
-	python main.py "1 + 3 * (2 - 1)^2"
+	python main.py "1 + 3 * ( 2 - 1 ) ^ 2"
 
 ## Features
 Following operations are supported
