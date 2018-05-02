@@ -59,8 +59,78 @@ correction_number: 3
 duration: 2
 
 sections:
-- name: <>
+- name: Tests
   position: 1
   description: ''
   questions:
-    - name: <>
+
+    - name: OOP Stack
+      guidelines: |
+
+          Check for stack.py file. It should contain class name `Stack`.
+          This class should have methods from pdf implemented.
+
+      rating: bool
+      kind: standart
+      position: 1
+      questions_skills:
+      - percentage: 10
+        name: Object-oriented programming
+
+    - name: Simple tests
+      guidelines: |
+
+          Test program with one operator and two operands.
+          Examples: "1 + 2", "2 ^ 2", "100 - 200", etc.
+
+      rating: bool
+      kind: standard
+      position: 2
+      questions_skills:
+      - percentage: 30
+        name: Algorithms & AI
+
+    - name: Medium test
+      guidelines: |
+
+          Test program with more complex expression
+          like: "1 + 3 * 2 - 10 ^ 2" or "2 ^ 2 * 2 / 2"
+          And don't forget brackets: (1 + 2) - (2 ^ 3 * 10)
+
+      rating: bool
+      kind: standard
+      position: 3
+      questions_skills:
+      - percentage: 30
+        name: Algorithms & AI
+
+    - name: Go bananas!
+      guidelines: |
+
+          Imagine that it's you birthday and the person you're
+          correcting didn't give you a present. He deserves to fail!
+          Try to break his program. Come with everything you've got.
+          Remember, that input expression must be correct.
+
+      rating: bool
+      kind: standard
+      position: 3
+      questions_skills:
+      - percentage: 30
+        name: Algorithms & AI
+
+- name: Bonus
+  description: ''
+  position: 2
+  questions:
+  - name: Bonuses
+    guidelines: |
+
+        In this section rate bonuses or anything else you deem worthy
+
+    rating: multi
+    kind: bonus
+    position: 1
+    questions_skills:
+    - percentage: 25
+      name: Algorithms & AI
