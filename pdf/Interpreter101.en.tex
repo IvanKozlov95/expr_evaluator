@@ -1,0 +1,247 @@
+\documentclass{42-en}
+
+
+%******************************************************************************%
+%                                                                              %
+%                                    Header                                    %
+%                                                                              %
+%******************************************************************************%
+\begin{document}
+
+
+
+                           \title{Evaluate expression}
+                          \subtitle{Just because it's fun}
+                       \member{Ivan Kozlov}{ikozlov@student.42.us.org}
+                        \member{Kai Drumm}{kai@42.us.org}
+
+\summary {
+  Summary: The aim of this project is to code a mathematical expression evaluator on python. (Don't worry. It's easier then it seams.)
+}
+
+\maketitle
+
+\tableofcontents
+
+
+%******************************************************************************%
+%                                                                              %
+%                                  Foreword                                    %
+%                                                                              %
+%******************************************************************************%
+\chapter{Foreword}
+
+    In case you missed Geography a lot in school or just want to learn some exiting facts about the world in live in - here are 20 facts about Poland. Read away...\\
+
+            \begin{enumerate}\itemsep7pt
+                \item The most popular dog’s name in Poland is “Burek”, which is the Polish word for a brown-grey colour.
+                \item In Poland, people generally peel bananas from the blossom end and not the stem end.
+                \item Poland shares its borders with no less than seven countries: Russia, Lithuania, Belarus, Slovakia, Ukraine, the Czech Republic and Germany.
+                \item Poland has had many capital cities in its time. These have included Gniezno, Poznan, Krakow and Warsaw. Lublin has been the capital twice – after both World Wars.
+                \item Geographically, Poland is not actually in Eastern Europe – it is in fact in the very centre of Europe(this inaccuracy personally drives me crazy)
+                \item In Poland, one’s “Name Day” – imieniny – is considered a far more important occasion than one’s birthday.
+                \item Poland’s national symbol is the white-tailed eagle.(get that US)
+                \item The name “Poland” originates from the name of the tribe Polanie. This tribe used to inhabit the Western part of what we now call Poland, and originally meant “people living in open fields”.
+                \item The most “World’s Strongest Man” winners are from Poland.
+                \item People of Polish descent have won 17 noble prizes, including four for peace and five for literature.
+                \item One third of Poland is covered with forest, with 50% of the land is dedicated to farming. The country contains 9,300 lakes, 23 National Parks and one desert.
+                \item Rysy, in the Tatra Mountains, is the highest point in Poland, at a height of 2,499 m.
+                \item Most Poles are Roman Catholics.
+                \item Roman Catholicism is so popular that Poland has a TV channel dedicated to the Pope.
+                \item In 1989, Poland held its first free elections in more than 40 years.
+                \item Bigos is the country’s most popular traditional dish. It is a type of stew made from Polish sauerkraut, fresh cabbage, different types of meat, sausage, prunes, dried mushrooms, onions and spices. This is cooked over several days and served with potatoes and bread.
+                \item Marzanna is a Polish tradition where people weave straw dolls, which they then decorate with ribbons. These dolls represent winter, so when the snow starts to melt the Marzanna dolls are thrown into a river, symbolizing the ‘killing’ of winter.
+                \item The Polish are generally well educated, with 90% of Poles having completed at least a secondary education.
+                \item The Polish born astronomer Nicolaus Copernicus is considered to be the first person to propose the theory that the earth was not the centre of the universe.
+                \item In Poland, pizza bases are not topped with Napolitana or a tomato-based sauce. These are generally served separately and resemble what we would consider to be ketchup.\\
+            \end{enumerate}
+
+        \warn{
+            Usually foreword has no connection to subject whatsoever. But not in this case. What is so polish about mathematical expression?
+        }
+
+%******************************************************************************%
+%                                                                              %
+%                                 Introduction                                 %
+%                                                                              %
+%******************************************************************************%
+\chapter{Introduction}
+
+    The goal of this project is to get you familiar with data structure named 
+    \texttt{Stack}. This is very common way to organize an array of elements
+    used in both real live and software development. There are many real life
+    examples of stack. Consider the simple example of plates stacked over one 
+    another in canteen. The plate which is at the top is the first one to be 
+    removed, i.e. the plate which has been placed at the bottom most position 
+    remains in the stack for the longest period of time. 
+    So, it can be simply seen to follow LIFO/FILO order.
+    
+    Also for the reasons of common sense and countess others stack structure
+    must be implemented using OOP.
+    
+    \hint{
+        'P' in OOP stands for programming :)
+    }
+
+
+%******************************************************************************%
+%                                                                              %
+%                                  Goals                                       %
+%                                                                              %
+%******************************************************************************%
+\chapter{Goals}
+
+    Stack is not much use by itself but it can be very useful tool to solve certain
+    problems. This project is not about solving an expression(I believe you are
+    capable of doing so).
+
+    Through this project, you will use stack to convert expression to form that
+    machine will understand and then calculate. Simple? We'll see about that...
+
+
+%******************************************************************************%
+%                                                                              %
+%                             General instructions                             %
+%                                                                              %
+%******************************************************************************%
+\chapter{General instructions}
+
+    \begin{itemize}\itemsep1pt
+        \item You will use Python 3 in this project(New is always better. \href{https://en.wikipedia.org/wiki/Barney_Stinson}{True story})
+        \item You are not allowed use any modules except \texttt{sys}
+        \item You are free to organize and name your files as you wish,
+        but within the constraints listed here.
+        \item Besides files you need, you must turn in two files named
+        \texttt{stack.py} and \texttt{main.py}
+        \item \texttt{stack.py} must have an implementation of class Stack
+        \item \texttt{main.py} must be a main executable, which will calculate an expression
+        and print the result on stdout
+        \item All files must be placed at root of the folder
+        \item In no way you program should exit unexpectedly
+        \item May the Force be with you. Always.
+    \end{itemize}
+
+%******************************************************************************%
+%                                                                              %
+%                             Mandatory part                                   %
+%                                                                              %
+%******************************************************************************%
+\chapter{Mandatory part}
+
+    \section{Stack 'em up}
+    
+    \texttt{stack.py} must have an implementation of the class \texttt{Stack}
+    with following methods:
+
+            \begin{itemize}\itemsep1pt
+                \item push - pushes value on top of the stack
+                \item pop - returns value of top element of the stack and removes it
+                \item peek - returns value of top element of the stack \textbf{without} removing it
+                \item isEmpty - returns \texttt{true} if stack is empty and \texttt{false} otherwise
+            \end{itemize}
+    Here is a skeleton for you: 
+\begin{42pycode}
+class Stack:
+    def __init__(self):
+        pass
+    
+    def push(self):
+        pass
+    
+    def pop(self):
+        pass
+
+    def peek(self):
+        pass
+
+    def isEmpty(self):
+        pass
+\end{42pycode}
+
+    \section{What can it do?}
+    
+    Your program must support following operations:
+        \begin{itemize}\itemsep1pt
+            \item addition - represented by \texttt{+}
+            \item subtraction - represented by \texttt{-}
+            \item modulo - represented by \texttt{\%}
+            \item division - represented by \texttt{/}
+            \item multiplication - represented by \texttt{*}
+            \item power - represented by \texttt{\^}
+            \item don't forget about parenthesis :) 
+        \end{itemize}
+
+    \hint {
+              Think about order of operations. Multiplication always goes before addition
+              but parenthesis can change the order.
+            }
+
+    \section{Program entry}
+    
+        You program will take 1st argument passed representing an expression to evaluate.
+        In case there are too many arguments(or none) your program should display its usage:
+        \newline
+        \begin{42console}
+$python3 main.py | cat -e
+$Usage: python3 main.py [expression]$\end{42console}
+        \newline
+        \info{
+                  All operators and operand \textbf{must} be separated by spaces. The only exception is
+                  negative values like \texttt{-2}.
+                }
+        The expression will be correct and \textbf{will not} contain any errors.
+        Here is an example of how you program should work:
+        
+        \begin{42console}
+$./main.py "1 + 3 * (2 - 1) ^ 2" | cat -e
+$ 4$\end{42console}
+
+Or
+
+        \begin{42console}
+$python3 main.py "1 + 3 * (2 - 1) ^ 2" | cat -e
+$ 4$\end{42console}
+
+
+%******************************************************************************%
+%                                                                              %
+%                                 Bonus part                                   %
+%                                                                              %
+%******************************************************************************%
+\chapter{Bonus part}
+
+    We all like bonuses, don't we? Evaluate expression is just a first step.
+    You can evaluate everything! Python, for example, is an interpreted language.
+    That means that a special program called interpreter runs the code and evaluates
+    commands step by step. You can think about it as complex expression with support
+    of more operations then mathematical. Here are some ideas to give you chance
+    to improve your program.
+     \begin{description}\itemsep3pt
+        \item [Errors:] people aren't perfect but program can be! Make you program check if
+        input is correct. It can give an error message to user, explaining what is wrong.
+        \textcolor{blue}{You} \textcolor{green}{can} \textcolor{orange}{add} \textcolor{red}{colors}!
+                \begin{42console}
+$./main.py "1 + " | cat -e
+$[ERROR] Missing an operand$\end{42console}
+        \item [More operations:] Basic maths operations are fun but not \textsc{superfun}.
+        Add new operation to your program. Like binary operators, or absolute value.\\
+        \begin{42console}
+$./main.py "abs -1 + 2" | cat -e
+$ 3$
+$./main.py "1 << 3 / 2" | cat -e
+$ 4$\end{42console}
+    \end{description}
+    
+
+%******************************************************************************%
+%                                                                              %
+%                           Turn-in and peer-evaluation                        %
+%                                                                              %
+%******************************************************************************%
+\chapter{Turn-in and peer-evaluation}
+
+    Submit your work on your \textbf{git} repository as usual. Only the work on your repository
+will be graded.
+
+%******************************************************************************%
+\end{document}
