@@ -1,0 +1,66 @@
+---
+name Expression evaluator
+lg: en
+is_primary: true
+comment: ''
+
+introduction_md: |
+
+  To ensure this evaluation goes smoothly, please respect the following set
+  of rules :
+
+  - Please remain courteous, polite, respectful and constructive at all 
+    times during this exchange. The trust bond between the school's 
+    communauty and yourself depends on it.
+
+  - Should you notice any malfunctions within the submitted project, 
+    make sure you take the time to discuss those with the student (or 
+    group of students) being graded.
+
+  - Keep in mind that some subjects can be interpreted differently.
+    If you come accross a situation where the student you're grading 
+    has interpreted the subject differently than you, try and judge
+    fairly whether their interpretation is acceptable or not, and grade
+    them accordingly. Our peer-evaluation system can only work if you
+    both take it seriously.
+
+guidelines_md: |
+
+  - You may only evaluate whatever is in the GiT submission directory of 
+    the student you are grading.
+
+  - Make sure to check wether the GiT submission directory
+    belongs to the student (or group) you're grading, and that
+    it's the right project.
+
+  - Make sure no mischievous aliases have been used to trick you 
+    into correcting something that is not actually in the official
+    submitted directory.
+
+  - Any script created to make this evaluation session easier - whether
+    it was produced by you or the student being graded - must be  
+    checked rigorously in order to avoid bad surprises.
+
+  - If the student who is grading this project hasn't done the
+    project him/herself yet, he/she must read the whole topic 
+    before starting the evaluation session.
+
+  - Use the flags available to you on this scale in order to report
+    a submission directory that is empty, non-functional, that contains
+    a norm errors or a case of cheating, etc...
+    In this case, the evaluation session ends and the final grade is 0
+    (or -42, in case of cheating). However, unless the student has
+    cheated, we advise you to go through the project together in order 
+    for the two (or more) of you to identify the problems that may have 
+    led for this project to fail, and avoid repeating those mistakes for
+    future projects.
+
+correction_number: 3
+duration: 2
+
+sections:
+- name: <>
+  position: 1
+  description: ''
+  questions:
+    - name: <>
