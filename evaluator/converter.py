@@ -1,3 +1,5 @@
+from .stack import Stack
+
 # constants
 operators = ['+', '-', '*', '/', '%', '^']
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -43,7 +45,7 @@ def incorrect_token(token, pos):
 def infix_to_postfix(infix):
 	sign = 1
 	rpn = []
-	stack = []
+	stack = Stack()
 	lastop = True
 
 	for idx, token in enumerate(infix):
@@ -54,7 +56,7 @@ def infix_to_postfix(infix):
 					incorrect_token(infix[idx + 1], idx + 1)
 				elif infix[idx + 1] is '(':
 					rpn.append('-1')
-					stack.append('*')
+					stack.push('*')
 					sign = 1
 			else:
 				raise Exception("Not enough tokens")
@@ -62,14 +64,14 @@ def infix_to_postfix(infix):
 		if token in operators:
 			if lastop is True:
 				incorrect_token(token, idx)
-			while len(stack) > 0 and opcmp(stack[-1], token) >= 0:
+			while stack.Length() > 0 and opcmp(stack.peek(), token) >= 0:
 				rpn.append(stack.pop())
-			stack.append(token)
+			stack.push(token)
 			lastop = True
 		elif token == '(':
-			stack.append(token)
+			stack.push(token)
 		elif token == ')':
-			while stack[-1] != '(':
+			while stack.peek() != '(':
 				rpn.append(stack.pop())
 			stack.pop()
 			lastop = False
@@ -78,7 +80,6 @@ def infix_to_postfix(infix):
 			sign = 1
 			lastop = False
 
-	while len(stack) != 0:
+	while not stack.isEmpty():
 		rpn.append(stack.pop())
-
 	return rpn
