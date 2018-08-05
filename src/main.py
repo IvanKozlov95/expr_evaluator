@@ -7,4 +7,4 @@ if __name__ == "__main__":
         filename = sys.argv[1]
         file = open(filename).read()
         interpreter = Interpreter(file)
-        interpreter.parse()
+        print(interpreter.run())
