@@ -10,13 +10,13 @@
 
 
 
-                           \title{Evaluate expression}
-                          \subtitle{Just because it's fun}
+                           \title{Interpreter101}
+                          \subtitle{Create your own language instead of learning one!}
                        \member{Ivan Kozlov}{ikozlov@student.42.us.org}
                         \member{Kai Drumm}{kai@42.us.org}
 
 \summary {
-  Summary: The aim of this project is to code a mathematical expression evaluator on python. (Don't worry. It's easier then it seams.)
+  Summary: The aim of this project is to code a simple interpreter. (Don't worry. It's easier then it seams.)
 }
 
 \maketitle
@@ -31,7 +31,7 @@
 %******************************************************************************%
 \chapter{Foreword}
 
-    In case you missed Geography a lot in school or just want to learn some exiting facts about the world in live in - here are 20 facts about Poland. Read away...\\
+    In case you missed Geography in school or just want to learn some exciting facts about the world you live in - here are 20 facts about Poland. Read away...\\
 
             \begin{enumerate}\itemsep7pt
                 \item The most popular dog’s name in Poland is “Burek”, which is the Polish word for a brown-grey colour.
@@ -57,7 +57,7 @@
             \end{enumerate}
 
         \warn{
-            Usually foreword has no connection to subject whatsoever. But not in this case. What is so polish about mathematical expression?
+            Usually foreword has no connection to subject whatsoever. But not in this case. What is so polish about this topic? Can you read these facts in reverse?
         }
 
 %******************************************************************************%
@@ -67,22 +67,17 @@
 %******************************************************************************%
 \chapter{Introduction}
 
-    The goal of this project is to get you familiar with data structure named 
-    \texttt{Stack}. This is very common way to organize an array of elements
-    used in both real live and software development. There are many real life
-    examples of stack. Consider the simple example of plates stacked over one 
-    another in canteen. The plate which is at the top is the first one to be 
-    removed, i.e. the plate which has been placed at the bottom most position 
-    remains in the stack for the longest period of time. 
-    So, it can be simply seen to follow LIFO/FILO order.
+    Programming languages were around since 1942. First language was Plankalkül
+    or  \texttt{Plan Calculus}. It was a simple(not really) programming language
+    which mostly focused on algebra and made calculations a lot easier.
     
-    Also for the reasons of common sense and countess others stack structure
-    must be implemented using OOP.
+    Since then languages have developed to be able to do complex things(such as
+    the operation system you are using right now). But computers haven't changed much.
+    There is still a need to translate the language to commands a machine can understand.
     
-    \hint{
-        'P' in OOP stands for programming :)
-    }
-
+    There are two types of languages: \textbf{compiling} and \textbf{interpreted}.
+    We will be focusing on the second one for several reasons(you don't want to learn
+    assembly, do you?)
 
 %******************************************************************************%
 %                                                                              %
@@ -90,13 +85,39 @@
 %                                                                              %
 %******************************************************************************%
 \chapter{Goals}
+    
+    The goal of this project is to introduce you to inner workings of
+    programming languages. Sounds fun? No? Too bad.
+    
+    In this project you will create you own language. It won't do much, but you
+    have to start somewhere, right? At the very end your language will calculate
+    a mathematical expression, which may include variables.
+    
+    You also will get familiar with the \texttt{Stack} data structure. 
+    This is very a common way to organize an array of elements
+    used both in real life and in software development. There are many real life
+    examples of a stack. Consider the simple example of plates stacked over one 
+    another in the restaurant. The plate which is at the top is the first one to be 
+    removed, i.e. the plate which has been placed at the bottom most position 
+    remains in the stack for the longest period of time. 
+    So, it can be simply seen to follow LIFO/FILO order.
+    
+    \hint{
+        LIFO stands for \texttt{Last In First Out}
+    }
+    
+    For the reasons of common sense and countless others, stack structure t
+    must be implemented using OOP.
+    
+    \hint{
+        'P' in OOP stands for programming :)
+    }
 
-    Stack is not much use by itself but it can be very useful tool to solve certain
-    problems. This project is not about solving an expression(I believe you are
-    capable of doing so).
+    The stack is not much use by itself, but it can be very useful tool to solve certain
+    problems.
 
-    Through this project, you will use stack to convert expression to form that
-    machine will understand and then calculate. Simple? We'll see about that...
+    Through this project, you will use a stack to convert an expression to a form
+    that a machine will understand and then calculate. Simple? We'll see about that...
 
 
 %******************************************************************************%
@@ -111,13 +132,16 @@
         \item You are not allowed use any modules except \texttt{sys}
         \item You are free to organize and name your files as you wish,
         but within the constraints listed here.
-        \item Besides files you need, you must turn in two files named
-        \texttt{stack.py} and \texttt{main.py}
+        \item Besides the files you need, you must turn in three files named
+        \texttt{stack.py}, \texttt{interpreter.py} and \texttt{main.py}
         \item \texttt{stack.py} must have an implementation of class Stack
-        \item \texttt{main.py} must be a main executable, which will calculate an expression
-        and print the result on stdout
+        \item \texttt{interpreter.py} is the main class of your program. It will get the 
+        code as text, parse and execute it
+        \item \texttt{main.py} must be a main executable, which will calculate an 
+        expression and print the result on stdout
         \item All files must be placed at root of the folder
-        \item In no way you program should exit unexpectedly
+        \item In no way you program should exit unexpectedly. You are allowed to use
+        custom exception errors.
         \item May the Force be with you. Always.
     \end{itemize}
 
@@ -128,7 +152,43 @@
 %******************************************************************************%
 \chapter{Mandatory part}
 
-    \section{Stack 'em up}
+    Your language will have simple and straightforward syntax. Here is the example
+    
+\begin{42ccode}
+a = 1
+b = 2
+c = 3
+a + b + c
+\end{42ccode}
+
+    Your test file will contain \texttt{n} lines of code. The first \texttt{n - 1} lines
+    of this file will be variables. These lines should follow simple syntax:
+\begin{42ccode}
+name = value
+\end{42ccode}
+    Where \texttt{name} is a letter of Latin alphabet and \texttt{value} is an integer.
+    
+    The last line must be an mathematical expression which may contain variables, integers, and math operations. Just like in normal mathematical expression. No tricks.
+    
+    Your program must support following operations:
+    \begin{itemize}\itemsep1pt
+        \item addition - represented by \texttt{+}
+        \item subtraction - represented by \texttt{-}
+        \item modulo - represented by \texttt{\%}
+        \item division - represented by \texttt{/}
+        \item multiplication - represented by \texttt{*}
+        \item power - represented by \texttt{\^}
+        \item don't forget about parenthesis :) 
+    \end{itemize}
+
+    \hint {
+              Think about order of operations. Multiplication always goes before addition
+              but parenthesis can change the order.
+            }
+
+    \section{Small steps in the right direction}
+    
+    Although creating an interpreter might seem overwhelming and it is. You can start by creating class \textbf{Stack}. Trust me you will need it at the end.
     
     \texttt{stack.py} must have an implementation of the class \texttt{Stack}
     with following methods:
@@ -158,49 +218,42 @@ class Stack:
         pass
 \end{42pycode}
 
-    \section{What can it do?}
-    
-    Your program must support following operations:
-        \begin{itemize}\itemsep1pt
-            \item addition - represented by \texttt{+}
-            \item subtraction - represented by \texttt{-}
-            \item modulo - represented by \texttt{\%}
-            \item division - represented by \texttt{/}
-            \item multiplication - represented by \texttt{*}
-            \item power - represented by \texttt{\^}
-            \item don't forget about parenthesis :) 
-        \end{itemize}
+    \section{Interpreter}
 
-    \hint {
-              Think about order of operations. Multiplication always goes before addition
-              but parenthesis can change the order.
-            }
+    The interpreter is the main class of your program. It will parse your code line by 
+    line, store all variables and then execute the last line as a mathematical 
+    expression. The variables will be replaced by their values.
 
     \section{Program entry}
     
-        You program will take 1st argument passed representing an expression to evaluate.
-        In case there are too many arguments(or none) your program should display its usage:
+        The program will take the 1st argument that is passed. This argument represents a 
+        path to the file with your program code. In case there are too many arguments(or 
+        none) your program 
+        should display its usage:
         \newline
         \begin{42console}
-$python3 main.py | cat -e
-$Usage: python3 main.py [expression]$\end{42console}
-        \newline
+> python3 main.py | cat -e
+Usage: python3 main.py [path_to_file]
+\end{42console}
         \info{
-                  All operators and operand \textbf{must} be separated by spaces. The only exception is
-                  negative values like \texttt{-2}.
+                  All operators and operands \textbf{must} be separated by spaces. The only exceptions are negative values like \texttt{-2}.
                 }
-        The expression will be correct and \textbf{will not} contain any errors.
+                
+        \info{
+                  The program will be correct and \textbf{will not} contain any errors.
+            }
         Here is an example of how you program should work:
         
         \begin{42console}
-$./main.py "1 + 3 * (2 - 1) ^ 2" | cat -e
-$ 4$\end{42console}
+> cat ../examples/test1
+a = 1
+b = 2
+c = 3
+a + b + c
 
-Or
-
-        \begin{42console}
-$python3 main.py "1 + 3 * (2 - 1) ^ 2" | cat -e
-$ 4$\end{42console}
+> python main.py ../examples/test1
+6
+\end{42console}
 
 
 %******************************************************************************%
@@ -210,26 +263,19 @@ $ 4$\end{42console}
 %******************************************************************************%
 \chapter{Bonus part}
 
-    We all like bonuses, don't we? Evaluate expression is just a first step.
+    We all like bonuses, don't we? Evaluating an expression is just the first step.
     You can evaluate everything! Python, for example, is an interpreted language.
-    That means that a special program called interpreter runs the code and evaluates
-    commands step by step. You can think about it as complex expression with support
-    of more operations then mathematical. Here are some ideas to give you chance
-    to improve your program.
+    That means that a special program called an interpreter runs the code and evaluates your commands step by step. You can think about it as a complex expression with support for more operations than mathematical. Here are some ideas to give you a chance to improve your program.
      \begin{description}\itemsep3pt
-        \item [Errors:] people aren't perfect but program can be! Make you program check if
-        input is correct. It can give an error message to user, explaining what is wrong.
+        \item [Errors:] people aren't perfect but your program can be! Make it check if
+        the input is correct. It can give an error message to a user, explaining what is wrong.
         \textcolor{blue}{You} \textcolor{green}{can} \textcolor{orange}{add} \textcolor{red}{colors}!
                 \begin{42console}
-$./main.py "1 + " | cat -e
-$[ERROR] Missing an operand$\end{42console}
-        \item [More operations:] Basic maths operations are fun but not \textsc{superfun}.
-        Add new operation to your program. Like binary operators, or absolute value.\\
-        \begin{42console}
-$./main.py "abs -1 + 2" | cat -e
-$ 3$
-$./main.py "1 << 3 / 2" | cat -e
-$ 4$\end{42console}
+> ./main.py error_file | cat -e
+[ERROR] Variable 'f' is not defined
+\end{42console}
+        \item [More operations:] Basic math operations are fun but not \textsc{superfun}.
+        Add a new operation to your program. Like binary operators, or absolute values.\\
     \end{description}
     
 
@@ -240,8 +286,8 @@ $ 4$\end{42console}
 %******************************************************************************%
 \chapter{Turn-in and peer-evaluation}
 
-    Submit your work on your \textbf{git} repository as usual. Only the work on your repository
-will be graded.
+    Submit your work on your \textbf{git} repository as usual. Only the work on your 
+    repository will be graded.
 
 %******************************************************************************%
 \end{document}
